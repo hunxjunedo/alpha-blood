@@ -54,7 +54,7 @@ export default function Home() {
       </Head>
 
     <a href='/login' className='absolute top-3 right-3 underline text-gray-500'>admin</a>
-    <div style={{fontFamily: "'Bebas Neue', sans-serif"}}  className="bg min-h-screen flex flex-col items-center justify-center from-gray-900 to-gray-800 text-white p-6">
+    <div style={{fontFamily: "'Bebas Neue', sans-serif"}}  className="bg w-[100vw] overflow-clip min-h-screen flex flex-col items-center justify-center from-gray-900 to-gray-800 text-white p-6">
                   <div className="text-3xl font-bold mb-10 grid grid-flow-col gap-5 items-center"> <img src='/logo-alpha.jpg'></img> X <img src='/logo-indus.png'></img></div>
 
              <h1
@@ -75,14 +75,14 @@ export default function Home() {
               <div key={t.name} className="flex flex-col items-center">
                 
                 {isWinner && <div className="text-6xl mb-2 animate-bounce">👑</div>}
-                <div className="w-30 h-80 relative  overflow-hidden flex items-end shadow-md">
+                <div className="w-[14vw] h-80 relative  overflow-hidden flex items-end shadow-md">
                 
                   <div
                     className={`${t.name} relative min-h-0.5 w-full transition-all duration-500 ease-out`}
                     style={{ height: `${pct}%` }}
                     title={`${t.points} pts (${pct}%)`}
                   />
-                    <img style={{maxWidth:'120px', position: 'absolute', bottom: 10, left: 0}} src={`${t.name.toLowerCase()}.png`}></img>
+                    <img style={{maxWidth:'120px', width: '14vw', position: 'absolute', bottom: 10, left: 0}} src={`${t.name.toLowerCase()}.png`}></img>
                 </div>
                 <div className="mt-3 text-center">
                   <div className={` tracking-wider font-medium ${isWinner ? 'text-yellow-300' : ''}`}>
