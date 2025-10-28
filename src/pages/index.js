@@ -55,17 +55,17 @@ export default function Home() {
 
     <a href='/login' className='absolute top-3 right-3 underline text-gray-500'>admin</a>
     <div style={{fontFamily: "'Bebas Neue', sans-serif"}}  className="bg w-[100vw] overflow-clip min-h-screen flex flex-col items-center justify-center from-gray-900 to-gray-800 text-white p-6">
-                  <div className="text-3xl font-bold mb-10 grid grid-flow-col gap-5 items-center"> <img src='/logo-alpha.jpg'></img> X <img src='/logo-indus.png'></img></div>
+                  <div className="text-3xl font-bold mb-10 grid grid-flow-col gap-5 items-center"> <img className='max-w-[15vw]' src='/logo-alpha.jpg'></img> X <img className='max-w-[15vw]' src='/logo-indus.png'></img></div>
 
              <h1
-          className="text-9xl md:text-8xl mb-11 tracking-wider"
+          className="text-6xl text-center md:text-8xl mb-11 tracking-wider"
           style={{ fontFamily: "'Bebas Neue', sans-serif", color: "#f57c21", letterSpacing: '0.1em' }}
         >
           SAVING LIVES
         </h1>
 
       <div className="w-full max-w-3xl">
-        <div className="flex items-end justify-center space-x-6">
+        <div className="flex items-end justify-center gap-[2vw]">
           {displayOrder.map(t => {
             const pct = Math.round((t.points / maxPoints) * 100)
             const isWinner = t.name === winner.name
@@ -82,7 +82,7 @@ export default function Home() {
                     style={{ height: `${pct}%` }}
                     title={`${t.points} pts (${pct}%)`}
                   />
-                    <img style={{maxWidth:'120px', width: '14vw', position: 'absolute', bottom: 10, left: 0}} src={`${t.name.toLowerCase()}.png`}></img>
+                    <img style={{ width: '14vw', position: 'absolute', bottom: 10, left: 0}} src={`${t.name.toLowerCase()}.png`}></img>
                 </div>
                 <div className="mt-3 text-center">
                   <div className={` tracking-wider font-medium ${isWinner ? 'text-yellow-300' : ''}`}>
