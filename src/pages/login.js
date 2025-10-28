@@ -32,8 +32,10 @@ export default function Login() {
   }
 
   return (
+ <>
+      <a href='/' className='absolute top-3 right-3 underline text-gray-500'>go back</a>
     <div className="min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow">
+      <div className="w-full max-w-md bg-gray-900 p-8 rounded-lg shadow">
         <h1 className="text-2xl font-semibold mb-6">Admin login</h1>
         {error && <div className="mb-4 text-red-600">{error}</div>}
         <form onSubmit={submit}>
@@ -47,9 +49,9 @@ export default function Login() {
             {loading ? 'Signing in...' : 'Sign in'}
           </button>
         </form>
-        <p className="mt-4 text-sm text-gray-600">Use the ADMIN_USER and ADMIN_PASSWORD from your <code>.env.local</code></p>
       </div>
     </div>
+ </>
   )
 }
 

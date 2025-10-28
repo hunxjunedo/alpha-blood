@@ -23,7 +23,7 @@ export default function Dashboard() {
     if (!studentName.trim()) return 'Student name is required'
     if (!collegeId.trim()) return 'College ID is required'
     // example college id pattern: alphanumeric, 4-12 chars
-    if (!/^\w{4,12}$/.test(collegeId)) return 'College ID must be 4-12 alphanumeric characters'
+    if (!/^\d{4,12}$/.test(collegeId)) return 'College ID must a number,  4–12 digits';
     if (!house) return 'House is required'
     return null
   }
@@ -60,8 +60,10 @@ export default function Dashboard() {
   }
 
   return (
+<>
+    <a href='/' className='absolute top-3 right-3 underline text-gray-500'>go back</a>
     <div className="min-h-screen flex items-start justify-center py-12">
-      <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow">
+      <div className="w-full max-w-lg bg-gray-900 p-8 rounded-lg shadow">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-semibold">Add student</h2>
           <button onClick={logout} className="text-sm text-red-600">Logout</button>
@@ -91,5 +93,6 @@ export default function Dashboard() {
         </form>
       </div>
     </div>
+</>
   )
 }

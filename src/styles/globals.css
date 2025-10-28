@@ -40,3 +40,23 @@ body {
   opacity: 0.2; /* Adjust as needed (0.0 to 1.0) */
   z-index: -1; /* Ensures the pseudo-element is behind the content */
 }
+
+.Rufus {
+  background-color: #659c3f;
+}
+
+.Dirus{
+  background-color: #d49901;
+}
+
+.Arcadian{
+  background-color: #6e4f9b;
+}
+
+.Timber{
+  background-color: #4481c0;
+}
+
+.Sawtooth{
+  background-color: #ec3e47;
+}

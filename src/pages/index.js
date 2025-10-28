@@ -3,11 +3,11 @@ import Head from 'next/head'
 
 export default function Home() {
   const [teams, setTeams] = useState([
-    { name: 'Rufus', color: 'bg-red-500', points: 0 },
-    { name: 'Dirus', color: 'bg-blue-500', points: 0 },
-    { name: 'Arcadian', color: 'bg-green-500', points: 0 },
-    { name: 'Timber', color: 'bg-yellow-400', points: 0 },
-    { name: 'Sawtooth', color: 'bg-purple-500', points: 0 }
+    { name: 'Rufus',  points: 0 },
+    { name: 'Dirus', points: 0 },
+    { name: 'Arcadian',  points: 0 },
+    { name: 'Timber',  points: 0 },
+    { name: 'Sawtooth', points: 0 }
   ])
 
   useEffect(() => {
@@ -19,10 +19,10 @@ export default function Home() {
 
         setTeams([
           { name: 'Rufus', color: 'bg-red-500', points: data.students.rufus },
-          { name: 'Dirus', color: 'bg-blue-500', points: data.students.dirus },
-          { name: 'Arcadian', color: 'bg-green-500', points: data.students.arcadian },
-          { name: 'Timber', color: 'bg-yellow-400', points: data.students.timber },
-          { name: 'Sawtooth', color: 'bg-purple-500', points: data.students.sawtooth }
+          { name: 'Dirus', points: data.students.dirus },
+          { name: 'Arcadian',  points: data.students.arcadian },
+          { name: 'Timber',  points: data.students.timber },
+          { name: 'Sawtooth', points: data.students.sawtooth }
         ])
       } catch (err) {
         console.error(err)
@@ -53,7 +53,8 @@ export default function Home() {
         />
       </Head>
 
-    <div  className="bg min-h-screen flex flex-col items-center justify-center from-gray-900 to-gray-800 text-white p-6">
+    <a href='/login' className='absolute top-3 right-3 underline text-gray-500'>admin</a>
+    <div style={{fontFamily: "'Bebas Neue', sans-serif"}}  className="bg min-h-screen flex flex-col items-center justify-center from-gray-900 to-gray-800 text-white p-6">
                   <div className="text-3xl font-bold mb-10 grid grid-flow-col gap-5 items-center"> <img src='/logo-alpha.jpg'></img> X <img src='/logo-indus.png'></img></div>
 
              <h1
@@ -69,22 +70,28 @@ export default function Home() {
             const pct = Math.round((t.points / maxPoints) * 100)
             const isWinner = t.name === winner.name
             return (
+         <>
+              
               <div key={t.name} className="flex flex-col items-center">
+                
                 {isWinner && <div className="text-6xl mb-2 animate-bounce">👑</div>}
-                <div className="w-30 h-80   overflow-hidden flex items-end shadow-md">
+                <div className="w-30 h-80 relative  overflow-hidden flex items-end shadow-md">
+                
                   <div
-                    className={`${t.color} min-h-0.5 w-full transition-all duration-500 ease-out`}
+                    className={`${t.name} relative min-h-0.5 w-full transition-all duration-500 ease-out`}
                     style={{ height: `${pct}%` }}
                     title={`${t.points} pts (${pct}%)`}
                   />
+                    <img style={{maxWidth:'120px', position: 'absolute', bottom: 10, left: 0}} src={`${t.name.toLowerCase()}.png`}></img>
                 </div>
                 <div className="mt-3 text-center">
-                  <div className={`font-medium ${isWinner ? 'text-yellow-300' : ''}`}>
+                  <div className={` tracking-wider font-medium ${isWinner ? 'text-yellow-300' : ''}`}>
                     {t.name}
                   </div>
-                  <div className="text-sm text-gray-300">{t.points} pts</div>
+                  <div className="text-sm text-gray-300"><span className='text-3xl'>{t.points}</span> pts</div>
                 </div>
               </div>
+         </>
             )
           })}
         </div>
