@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
+import Credit from './credit'
 
 export default function Home() {
   const [teams, setTeams] = useState([
@@ -45,6 +46,7 @@ export default function Home() {
 
   return (
      <>
+     <Credit />
        <Head>
         {/* Import a sporty Google Font */}
         <link
