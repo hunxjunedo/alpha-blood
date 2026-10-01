@@ -12,11 +12,15 @@ function getTokenFromReq(req) {
 
 export default async function handler(req, res) {
   const token = getTokenFromReq(req)
+  let session
   try {
-    jwt.verify(token, process.env.JWT_SECRET)
+    session = jwt.verify(token, process.env.JWT_SECRET)
   } catch (err) {
     return res.status(401).json({ message: 'Unauthorized' })
   }
+
+  const adminYear = session.year === '2026' ? '2026' : '2025'
+  const collectionName = adminYear === '2026' ? 'students_2026' : 'students'
 
   if (req.method === 'POST') {
     const { name, collegeId, house } = req.body || {}
@@ -25,7 +29,7 @@ export default async function handler(req, res) {
     if (!house || typeof house !== 'string') return res.status(400).json({ message: 'House required' })
 
     const { db } = await connectToDatabase()
-    const students = db.collection('students_2026')
+    const students = db.collection(collectionName)
 
     // Ensure we don't duplicate collegeId
     const exists = await students.findOne({ collegeId })
@@ -39,7 +43,7 @@ export default async function handler(req, res) {
   if (req.method === 'GET') {
     // optional: list students
     const { db } = await connectToDatabase()
-    const students = db.collection('students_2026')
+    const students = db.collection(collectionName)
     const list = await students.find().sort({ createdAt: -1 }).limit(200).toArray()
     return res.json({ students: list })
   }

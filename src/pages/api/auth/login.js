@@ -3,9 +3,10 @@ import { serialize } from 'cookie'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
-  const { user, password } = req.body || {}
+  const { user, password, year } = req.body || {}
+  const adminYear = year === '2026' ? '2026' : '2025'
   const ADMIN_USER = process.env.ADMIN_USER
-  const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD_2026 || process.env.ADMIN_PASSWORD
+  const ADMIN_PASSWORD = adminYear === '2026' ? process.env.ADMIN_PASSWORD_2026 : process.env.ADMIN_PASSWORD
   const JWT_SECRET = process.env.JWT_SECRET
   const COOKIE_NAME = process.env.SESSION_COOKIE_NAME || 'students_app_session'
 
@@ -17,7 +18,7 @@ export default async function handler(req, res) {
     return res.status(401).json({ message: 'Invalid username or password' })
   }
 
-  const token = jwt.sign({ user: ADMIN_USER }, JWT_SECRET, { expiresIn: '8h' })
+  const token = jwt.sign({ user: ADMIN_USER, year: adminYear }, JWT_SECRET, { expiresIn: '8h' })
 
   res.setHeader('Set-Cookie', serialize(COOKIE_NAME, token, {
     httpOnly: true,
