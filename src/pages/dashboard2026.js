@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 
 export default function Dashboard2026() {
   const router = useRouter()
@@ -50,26 +49,34 @@ export default function Dashboard2026() {
 
   return (
     <>
-      <Link href='/' className='absolute top-3 right-3 underline text-gray-500'>go back</Link>
+      <a href='/' className='absolute top-3 right-3 underline text-gray-500'>go back</a>
       <div className="min-h-screen flex items-start justify-center py-12">
         <div className="w-full max-w-lg bg-gray-900 p-8 rounded-lg shadow">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold">Add 2026 student</h2>
+            <h2 className="text-xl font-semibold">Add student</h2>
             <button onClick={logout} className="text-sm text-red-600">Logout</button>
           </div>
           {error && <div className="mb-4 text-red-600">{error}</div>}
           {success && <div className="mb-4 text-green-600">{success}</div>}
+
           <form onSubmit={submit}>
             <label className="block mb-2">Student name</label>
             <input value={studentName} onChange={e => setStudentName(e.target.value)} className="w-full p-2 border rounded mb-4" />
+
             <label className="block mb-2">House</label>
             <select value={house} onChange={e => setHouse(e.target.value)} className="w-full p-2 border rounded mb-4">
-              <option>Rufus</option><option>Dirus</option><option>Timber</option><option>Arcadian</option><option>Sawtooth</option>
+              <option>Rufus</option>
+              <option>Dirus</option>
+              <option>Timber</option>
+              <option>Arcadian</option>
+              <option>Sawtooth</option>
             </select>
+
             <label className="block mb-2">College ID</label>
             <input value={collegeId} onChange={e => setCollegeId(e.target.value)} className="w-full p-2 border rounded mb-6" />
+
             <button type="submit" disabled={loading} className="py-2 px-4 bg-green-600 text-white rounded">
-              {loading ? 'Saving...' : 'Save 2026 student'}
+              {loading ? 'Saving...' : 'Save student'}
             </button>
           </form>
         </div>
