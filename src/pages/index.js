@@ -48,12 +48,27 @@ export default function Home() {
      <>
      <Credit />
        <Head>
+        <link rel="icon" href="/logo-alpha.jpg" sizes="any" />
         <title>Blood Donation Leaderboard 2025</title>
         <link
           href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
           rel="stylesheet"
         />
       </Head>
+      <div style={{
+        width: "100vw",
+        height: "40px",
+        background: "#F67C21",
+        position: "absolute",
+        display: "grid",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "black",
+        fontWeight: "bolder",
+        fontSize: 20
+      }}>
+        <h1>This leaderboard is for the last year, <a className="underline cursor-pointer" href='/2026'>go to this year's leaderboard ?</a></h1>
+      </div>
 
     <a href='/login' className='absolute top-3 right-3 underline text-gray-500'>admin</a>
     <div style={{fontFamily: "'Bebas Neue', sans-serif"}}  className="bg w-[100vw] overflow-clip min-h-screen flex flex-col items-center justify-center from-gray-900 to-gray-800 text-white p-6">
