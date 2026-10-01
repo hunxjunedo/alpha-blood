@@ -48,7 +48,7 @@ export default function Home() {
      <>
      <Credit />
        <Head>
-        {/* Import a sporty Google Font */}
+        <title>Blood Donation Leaderboard 2025</title>
         <link
           href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
           rel="stylesheet"

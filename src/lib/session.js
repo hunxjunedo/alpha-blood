@@ -31,5 +31,5 @@ export function loginForYear(year) {
 }
 
 export function leaderboardForYear(year) {
-  return year === '2026' ? '/leaderboard2026' : '/'
+  return year === '2026' ? '/2026' : '/'
 }

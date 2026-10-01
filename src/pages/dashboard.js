@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { getSessionFromRequest, loginForYear } from '../lib/session'
 
@@ -52,11 +53,17 @@ export default function Dashboard() {
 
   return (
     <>
+      <Head>
+        <title>Admin Dashboard 2025</title>
+      </Head>
       <a href="/" className="absolute top-3 right-3 underline text-gray-500">go back</a>
       <div className="min-h-screen flex items-start justify-center py-12">
         <div className="w-full max-w-lg bg-gray-900 p-8 rounded-lg shadow">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold">Add student</h2>
+            <div>
+              <h2 className="text-xl font-semibold">Add student</h2>
+              <p className="text-sm text-gray-400 mt-1">2025 blood drive</p>
+            </div>
             <button onClick={logout} className="text-sm text-red-600">Logout</button>
           </div>
           {error && <div className="mb-4 text-red-600">{error}</div>}

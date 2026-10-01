@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { dashboardForYear, getSessionFromRequest } from '../lib/session'
 
@@ -32,10 +33,13 @@ export default function Login() {
 
   return (
     <>
+      <Head>
+        <title>Admin Login 2025</title>
+      </Head>
       <a href="/" className="absolute top-3 right-3 underline text-gray-500">go back</a>
       <div className="min-h-screen flex items-center justify-center">
         <div className="w-full max-w-md bg-gray-900 p-8 rounded-lg shadow">
-          <h1 className="text-2xl font-semibold mb-6">Admin login</h1>
+          <h1 className="text-2xl font-semibold mb-6">Admin login — 2025</h1>
           {error && <div className="mb-4 text-red-600">{error}</div>}
           <form onSubmit={submit}>
             <label className="block mb-2">Username</label>

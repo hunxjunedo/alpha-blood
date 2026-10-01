@@ -45,6 +45,7 @@ export default function Leaderboard2026() {
     <>
       <Credit />
       <Head>
+        <title>Blood Donation Leaderboard 2026</title>
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
       </Head>
 
