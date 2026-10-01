@@ -65,7 +65,7 @@ export default function Home() {
         justifyContent: "center",
         color: "black",
         fontWeight: "bolder",
-        fontSize: 20
+        fontSize: 18
       }}>
         <h1>This leaderboard is for the last year, <a className="underline cursor-pointer" href='/2026'>go to this year's leaderboard ?</a></h1>
       </div>
