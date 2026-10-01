@@ -57,15 +57,15 @@ export default function Home() {
       </Head>
       <div style={{
         width: "100vw",
-        height: "40px",
+        height: "fit-content",
+        textAlign: "center",
         background: "#F67C21",
-        position: "absolute",
         display: "grid",
         alignItems: "center",
         justifyContent: "center",
         color: "black",
         fontWeight: "bolder",
-        fontSize: 18
+        fontSize: 15
       }}>
         <h1>This leaderboard is for the last year, <a className="underline cursor-pointer" href='/2026'>go to this year's leaderboard ?</a></h1>
       </div>

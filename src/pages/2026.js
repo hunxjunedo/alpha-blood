@@ -113,7 +113,7 @@ export default function Leaderboard2026() {
           `}</style>
         </Head>
 
-        <Credit />
+       
 
         <main
           className="min-h-screen flex items-center justify-center text-white"
@@ -192,12 +192,12 @@ export default function Leaderboard2026() {
         `}</style>
       </Head>
 
-      <Credit />
+
 
       <a
         href="/login2026"
         className="
-          fixed top-4 right-5 z-50
+          fixed top-4 right-5 z-50 underline
           text-[10px] tracking-[0.25em]
           text-white/30 hover:text-white
           transition-colors
@@ -610,6 +610,16 @@ export default function Leaderboard2026() {
               "
             >
               Give blood. Save lives.
+            </div>
+                        <div
+              className="
+                text-[9px]
+                tracking-[0.35em]
+                uppercase
+                text-white/20 underline
+              "
+            >
+              <a href='https://www.github.com/hunxjunedo'>Hunain Ahmed</a>
             </div>
 
           </div>
