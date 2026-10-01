@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { dashboardForYear, getSessionFromRequest } from '../lib/session'
 
 export default function Login2026() {
   const router = useRouter()
@@ -31,7 +32,7 @@ export default function Login2026() {
 
   return (
     <>
-      <a href='/' className='absolute top-3 right-3 underline text-gray-500'>go back</a>
+      <a href="/leaderboard2026" className="absolute top-3 right-3 underline text-gray-500">go back</a>
       <div className="min-h-screen flex items-center justify-center">
         <div className="w-full max-w-md bg-gray-900 p-8 rounded-lg shadow">
           <h1 className="text-2xl font-semibold mb-6">Admin login</h1>
@@ -53,7 +54,14 @@ export default function Login2026() {
   )
 }
 
-export async function getServerSideProps() {
-  return { props: {} }
-}
+export async function getServerSideProps({ req }) {
+  const session = getSessionFromRequest(req)
+  if (!session) return { props: {} }
 
+  return {
+    redirect: {
+      destination: dashboardForYear(session.year),
+      permanent: false
+    }
+  }
+}

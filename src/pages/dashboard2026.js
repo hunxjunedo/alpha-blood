@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { getSessionFromRequest, loginForYear } from '../lib/session'
 
 export default function Dashboard2026() {
   const router = useRouter()
@@ -9,12 +10,6 @@ export default function Dashboard2026() {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
   const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    fetch('/api/auth/me').then(res => {
-      if (res.status === 401) router.replace('/login2026')
-    })
-  }, [router])
 
   async function submit(e) {
     e.preventDefault()
@@ -49,7 +44,7 @@ export default function Dashboard2026() {
 
   return (
     <>
-      <a href='/' className='absolute top-3 right-3 underline text-gray-500'>go back</a>
+      <a href="/leaderboard2026" className="absolute top-3 right-3 underline text-gray-500">go back</a>
       <div className="min-h-screen flex items-start justify-center py-12">
         <div className="w-full max-w-lg bg-gray-900 p-8 rounded-lg shadow">
           <div className="flex justify-between items-center mb-6">
@@ -83,4 +78,27 @@ export default function Dashboard2026() {
       </div>
     </>
   )
+}
+
+export async function getServerSideProps({ req }) {
+  const session = getSessionFromRequest(req)
+  if (!session) {
+    return {
+      redirect: {
+        destination: loginForYear('2026'),
+        permanent: false
+      }
+    }
+  }
+
+  if (session.year === '2025') {
+    return {
+      redirect: {
+        destination: '/dashboard',
+        permanent: false
+      }
+    }
+  }
+
+  return { props: {} }
 }
