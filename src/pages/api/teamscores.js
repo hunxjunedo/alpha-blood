@@ -7,7 +7,8 @@ export default async function handler(req, res) {
   if (req.method === 'GET') {
     // optional: list students
     const { db } = await connectToDatabase()
-    const students = db.collection('students')
+    const year = req.query.year === '2026' ? '2026' : 'current'
+    const students = db.collection(year === '2026' ? 'students_2026' : 'students')
     const list = await students.find().sort({ createdAt: -1 }).toArray();
     let teamscores= {
         rufus: 0,

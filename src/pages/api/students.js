@@ -25,7 +25,7 @@ export default async function handler(req, res) {
     if (!house || typeof house !== 'string') return res.status(400).json({ message: 'House required' })
 
     const { db } = await connectToDatabase()
-    const students = db.collection('students')
+    const students = db.collection('students_2026')
 
     // Ensure we don't duplicate collegeId
     const exists = await students.findOne({ collegeId })
@@ -39,7 +39,7 @@ export default async function handler(req, res) {
   if (req.method === 'GET') {
     // optional: list students
     const { db } = await connectToDatabase()
-    const students = db.collection('students')
+    const students = db.collection('students_2026')
     const list = await students.find().sort({ createdAt: -1 }).limit(200).toArray()
     return res.json({ students: list })
   }
